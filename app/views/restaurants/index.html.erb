@@ -1,0 +1,12 @@
+<h1>Restaurants</h1>
+<%= link_to 'New Restaurant', new_restaurant_path %>
+<ul class="list-group">
+  <% @restaurants.each do |restaurant| %>
+    <li class="list-group-item"><%= link_to restaurant.name, restaurant_path(restaurant) %>
+    <%= link_to 'Delete', restaurant_path(restaurant),
+            method: :delete,
+            class: "tn btn-danger btn-sm",
+            data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,23 @@
+<div class="container" >
+  <h1><%= @restaurant.name %> <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, restaurant_path(@restaurant),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %></h1>
+
+  <p><%= @restaurant.category %></p>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <%= link_to "Update restaurant", edit_restaurant_path(@restaurant) %>
+  <br>
+  <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
+  <br>
+  <%= link_to "< Back", restaurants_path %>
+  <br>
+  <p>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item"><%= review.content %></li>
+      <% end %>
+    </ul>
+  </p>
+
+</div>
