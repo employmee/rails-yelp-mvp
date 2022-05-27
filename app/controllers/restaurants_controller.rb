@@ -22,6 +22,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def update
@@ -33,10 +34,14 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
+  def reviews
+    @review = @restaurant.reviews
+  end
+
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :phone_number, :category)
+    params.require(:restaurant).permit(:name, :address, :phone_number, :category, :id)
   end
 
   def set_restaurant
